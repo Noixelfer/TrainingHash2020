@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace HashTraining
 {
@@ -8,7 +10,9 @@ namespace HashTraining
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			DataManager DataManager = new DataManager();
+			var model = DataManager.ReadFromFile("c_medium.in");
+			Console.Read();
 		}
 	}
 }
