@@ -36,7 +36,20 @@ namespace HashTraining
 			sr.Write(String.Join(" ", pizzaOutputModel.SelectedPizzaIds));
 
 			//Archive - TODO
-			sr.Close();
+			var score = pizzaOutputModel.Score;
+			var archivePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Archive\\" + outputName.Substring(0, outputName.Length - 3);
+
+			if (!Directory.Exists(archivePath))
+			{
+				Directory.CreateDirectory(archivePath);
+			}
+
+			var fileArchivePath = archivePath + "\\" + score.ToString();
+			StreamWriter srArchive = new StreamWriter(fileArchivePath, false);
+			srArchive.Write(pizzaOutputModel.NumberOfPizzas);
+			srArchive.WriteLine();
+			srArchive.Write(String.Join(" ", pizzaOutputModel.SelectedPizzaIds));
+			srArchive.Close();
 		}
 	}
 }
