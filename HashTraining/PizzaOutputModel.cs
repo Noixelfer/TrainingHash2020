@@ -13,22 +13,10 @@ namespace HashTraining
         
         public string problemId;
         
-        public IEnumerable<int> SelectedPizzaIds;
+        public List<int> SelectedPizzaIds;
+        public int Score { get; set; }
 
         public int NumberOfPizzas => SelectedPizzaIds.Count();
-
-        public void WriteToFile()
-        {
-            var filePath = "./output" + problemId + ".txt";
-            using (StreamWriter file = new StreamWriter(filePath, false))
-            {
-                file.Write(NumberOfPizzas + "\n");
-                foreach (var pizzaId in SelectedPizzaIds)
-                {
-                    file.Write(pizzaId + " ");
-                }
-            }
-        } 
     }
 }
     

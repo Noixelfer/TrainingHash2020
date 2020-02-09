@@ -22,9 +22,21 @@ namespace HashTraining
 			model.NumberOfTypes = int.Parse(firstLine[1]);
 
 			var slices = lines[1].Split(" ");
-			model.Slices = slices.Select(slice => int.Parse(slice));
+			model.Slices = slices.Select(slice => int.Parse(slice)).ToList();
 
 			return model;
+		}
+
+		public void WriteToFile(string outputName, PizzaOutputModel pizzaOutputModel)
+		{
+			var outputPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Output\\" + outputName + ".out";
+			StreamWriter sr = new StreamWriter(outputPath, false);
+			sr.Write(pizzaOutputModel.NumberOfPizzas);
+			sr.WriteLine();
+			sr.Write(String.Join(" ", pizzaOutputModel.SelectedPizzaIds));
+
+			//Archive - TODO
+			sr.Close();
 		}
 	}
 }

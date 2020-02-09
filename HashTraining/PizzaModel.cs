@@ -6,6 +6,6 @@ namespace HashTraining
 	{
 		public int NumberOfSlices { get; set; }
 		public int NumberOfTypes { get; set; }
-		public IEnumerable<int> Slices { get; set; }
+		public List<int> Slices { get; set; }
 	}
 }

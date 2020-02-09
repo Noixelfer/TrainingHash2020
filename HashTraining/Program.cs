@@ -12,7 +12,9 @@ namespace HashTraining
 		{
 			DataManager DataManager = new DataManager();
 			var model = DataManager.ReadFromFile("c_medium.in");
-			Console.Read();
+			ClasicSolutionD clasicSolutionD = new ClasicSolutionD(model);
+			var outputModel = clasicSolutionD.CreateOuputModel("c_medium.in");
+			DataManager.WriteToFile("c_medium.in", outputModel);
 		}
 	}
 }
