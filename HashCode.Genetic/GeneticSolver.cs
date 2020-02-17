@@ -22,10 +22,10 @@ namespace HashCode.Genetic
         public int StagnantGenerationsNumber { get; set; }
         public int MaxFitness { get; set; }
         public int MaxEpoch { get; set; }
-
+        public bool SaveEpoch { get; set; } = true;
         public string SolutionsOutputFile { get; set; } = "solutions.json";
 
-        private static readonly object _lock = new object();
+        private static object _lock = new object();
         private static double _bestFitness = 0;
         private static int _currentEpoch = 0;
         private static List<GeneticSolution> _solutions { get; set; } = new List<GeneticSolution>();
@@ -90,7 +90,7 @@ namespace HashCode.Genetic
         private void OnEpochEnded(Action<IChromosome> onBestSolutionReached)
         {
             Console.WriteLine($"Epoch {_currentEpoch} ended");
-            SaveEpoch();
+            if(SaveEpoch) SaveEpoch();
 
             if (_currentEpoch < MaxEpoch)
             {
