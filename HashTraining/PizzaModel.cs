@@ -2,7 +2,7 @@
 
 namespace HashTraining
 {
-	class PizzaModel
+	public class PizzaModel
 	{
 		public int NumberOfSlices { get; set; }
 		public int NumberOfTypes { get; set; }
