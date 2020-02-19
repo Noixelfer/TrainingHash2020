@@ -14,33 +14,33 @@ namespace HashCode.Genetic
         public static readonly List<ISelection> Selections = new List<ISelection> 
         {  
             new EliteSelection(), 
-            new RouletteWheelSelection(), 
+           // new RouletteWheelSelection(), 
             new TournamentSelection(), 
-            new StochasticUniversalSamplingSelection() 
+           // new StochasticUniversalSamplingSelection() 
         };
 
         public static readonly List<ICrossover> Crossovers = new List<ICrossover>
         {
-            new AlternatingPositionCrossover(),
+           // new AlternatingPositionCrossover(),
             new CutAndSpliceCrossover(),
-            new CycleCrossover(),
-            new OnePointCrossover(),
-            new PartiallyMappedCrossover(),
+           // new CycleCrossover(), // ORDERED
+           // new OnePointCrossover(),
+           // new PartiallyMappedCrossover(),
             new ThreeParentCrossover(),
-            new TwoPointCrossover(),
+           // new TwoPointCrossover(),
             new UniformCrossover(),
-            new VotingRecombinationCrossover()
+           // new VotingRecombinationCrossover()
         };
 
         public static readonly List<IMutation> Mutations = new List<IMutation>
         {
             new DisplacementMutation(),
-            new FlipBitMutation(),
+           // new FlipBitMutation(),
             new InsertionMutation(),
-            new PartialShuffleMutation(),
-            new ReverseSequenceMutation(),
+           // new PartialShuffleMutation(),
+           // new ReverseSequenceMutation(),
             new TworsMutation(),
-            new UniformMutation()
+            //new UniformMutation()
         };
 
         public static IEnumerable<GeneticConfiguration> GeneticConfigurations

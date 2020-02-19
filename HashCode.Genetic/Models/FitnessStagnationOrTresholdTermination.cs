@@ -18,7 +18,11 @@ namespace HashCode.Genetic.Models
 
         protected override bool PerformHasReached(IGeneticAlgorithm geneticAlgorithm)
         {
-            if (geneticAlgorithm.BestChromosome.Fitness.Value >= _fitnessThreshold) return true;
+            if (geneticAlgorithm?.BestChromosome?.Fitness != null &&
+                geneticAlgorithm.BestChromosome.Fitness.Value >= _fitnessThreshold)
+            {
+                return true;
+            }
 
             return base.PerformHasReached(geneticAlgorithm);
         }

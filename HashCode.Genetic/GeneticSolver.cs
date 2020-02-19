@@ -2,6 +2,7 @@
 using GeneticSharp.Domain.Chromosomes;
 using GeneticSharp.Domain.Fitnesses;
 using GeneticSharp.Domain.Populations;
+using GeneticSharp.Domain.Terminations;
 using GeneticSharp.Infrastructure.Framework.Threading;
 using HashCode.Genetic.Converters;
 using HashCode.Genetic.Models;
@@ -16,23 +17,23 @@ namespace HashCode.Genetic
 {
     public class GeneticSolver
     {
-        private readonly Population _population;
+        private readonly IPopulationFactory _populationFactory;
         private readonly IFitness _fitness;
 
         public int StagnantGenerationsNumber { get; set; }
         public int MaxFitness { get; set; }
         public int MaxEpoch { get; set; }
         public bool SaveEpochFile { get; set; } = true;
-        public string SolutionsOutputFile { get; set; } = "solutions.json";
+        public string OutputDirectory { get; set; } = "";
 
         private static object _lock = new object();
         private static double _bestFitness = 0;
         private static int _currentEpoch = 0;
         private static List<GeneticSolution> _solutions { get; set; } = new List<GeneticSolution>();
 
-        public GeneticSolver(Population population, IFitness fitness, int maxEpoch = 10, int stagnantGenerationsNumber = 30, int maxFitness = int.MaxValue)
+        public GeneticSolver(IPopulationFactory populationFactory, IFitness fitness, int maxEpoch = 10, int stagnantGenerationsNumber = 30, int maxFitness = int.MaxValue)
         {
-            _population = population;
+            _populationFactory = populationFactory;
             _fitness = fitness;
 
             StagnantGenerationsNumber = stagnantGenerationsNumber;
@@ -47,14 +48,16 @@ namespace HashCode.Genetic
 
         public void Solve(List<ParallelGeneticConfiguration> tasks, Action<IChromosome> onBestSolutionReached)
         {
-            Console.WriteLine("Starting solve...");
+            var taskTotal = tasks.Sum(t => t.TaskCount);
 
+            Console.WriteLine("Starting solve...");
             Parallel.Invoke(tasks.SelectMany(t => Enumerable.Range(1, t.TaskCount)
                                  .Select(taskNumber => (Action)(() => Solve(t.GeneticConfiguration, OnTerminationReached, taskNumber))))
                                  .ToArray());
 
             void OnTerminationReached(IChromosome chromosome, GeneticConfiguration configuration)
             {
+                Console.WriteLine($"Algorithm {_solutions.Count}/{taskTotal} finished. Configuration: {configuration.ToString().PadRight(70, ' ')}, Fitness: {chromosome.Fitness.Value}");
                 if (chromosome != null && chromosome.Fitness >= _bestFitness)
                 {
                     Console.WriteLine("Fitness was one of the best, saving solution...");
@@ -106,7 +109,7 @@ namespace HashCode.Genetic
             {
                 try
                 {
-                    File.WriteAllText(SolutionsOutputFile, JsonSerializer.Serialize(_solutions, new JsonSerializerOptions
+                    File.WriteAllText(OutputDirectory + $"solutions-{_currentEpoch}.json", JsonSerializer.Serialize(_solutions, new JsonSerializerOptions
                     {
                         Converters = { new GeneticConfigurationJsonConverter() }
                     }));
@@ -120,14 +123,15 @@ namespace HashCode.Genetic
 
         private void Solve(GeneticConfiguration configuration, Action<IChromosome, GeneticConfiguration> onTerminationReached, int taskNumber = 0)
         {
-            var algorithm = new GeneticAlgorithm(_population, _fitness, configuration.Selection, configuration.Crossover, configuration.Mutation)
+            var algorithm = new GeneticAlgorithm(_populationFactory.GeneratePopulation(), _fitness, 
+                                                 configuration.Selection, configuration.Crossover, configuration.Mutation)
             {
                 Termination = new FitnessStagnationOrTresholdTermination(StagnantGenerationsNumber, MaxFitness),
-                TaskExecutor = new ParallelTaskExecutor()
-                {
-                    MinThreads = 4,
-                    MaxThreads = 16
-                }
+                //TaskExecutor = new ParallelTaskExecutor()
+                //{
+                //    MinThreads = 4,
+                //    MaxThreads = 16
+                //}
             };
 
             algorithm.GenerationRan += (sender, e) =>
@@ -135,7 +139,7 @@ namespace HashCode.Genetic
                 if (algorithm.BestChromosome.Fitness.Value > _bestFitness)
                 {
                     _bestFitness = algorithm.BestChromosome.Fitness.Value;
-                    Console.WriteLine($"{configuration.ToString().PadLeft(50, ' ')}, Gen: {algorithm.GenerationsNumber.ToString().PadLeft(4, ' ')}, Fitness: {_bestFitness}");
+                    Console.WriteLine($"{configuration.ToString().PadRight(70, ' ')}, Gen: {algorithm.GenerationsNumber.ToString().PadRight(4, ' ')}, Fitness: {_bestFitness}");
                 }
             };
 
@@ -143,18 +147,18 @@ namespace HashCode.Genetic
             {
                 lock (_lock)
                 {
-                    Console.WriteLine($"Algorithm finished. Configuration: {configuration.ToString().PadLeft(50, ' ')}, Task: {taskNumber}, Fitness: {algorithm.BestChromosome.Fitness.Value}");
                     onTerminationReached(algorithm.BestChromosome, configuration);
                 }
             };
 
             try
             {
+                Console.WriteLine($"Staring configuration: {configuration.ToString().PadRight(70, ' ')}, Task: {taskNumber}");
                 algorithm.Start();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Something went wrong while running genetic algorithm for configuration {configuration.ToString().PadLeft(50, ' ')}, task: {taskNumber}");
+                Console.WriteLine($"Something went wrong while running genetic algorithm for configuration {configuration.ToString().PadRight(70, ' ')}, task: {taskNumber}");
                 onTerminationReached(null, configuration);
             }
 
