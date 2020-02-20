@@ -2,7 +2,7 @@
 
 namespace HashTraining
 {
-	class Library
+	public class Library
 	{
 		public int NumberOfBooks { get; set; }
 		public int SigningTime { get; set; }

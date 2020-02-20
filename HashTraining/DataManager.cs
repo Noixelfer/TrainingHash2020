@@ -29,8 +29,18 @@ namespace HashTraining
 				model.BookScores.Add(int.Parse(word));
 			}
 
-			var slices = lines[1].Split(" ");
-			model.Slices = slices.Select(slice => int.Parse(slice)).ToList();
+			for (int i = 2; i < (model.NumberOfLibraries + 2); i++)
+			{
+				var library = new Library();
+				var libraryLine1 = lines[(i - 1) * 2].Split(" ");
+				var libraryLine2 = lines[(i - 1) * 2 + 1].Split(" ");
+
+				library.NumberOfBooks = int.Parse(libraryLine1[0]);
+				library.SigningTime = int.Parse(libraryLine1[1]);
+				library.BooksShippedPerDay = int.Parse(libraryLine1[2]);
+
+				libraryLine2.ToList().ForEach(word => library.Books.Add(int.Parse(word)));
+			}
 
 			return model;
 		}
