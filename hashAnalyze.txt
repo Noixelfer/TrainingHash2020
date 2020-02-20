@@ -1,0 +1,18 @@
+a)...
+b)100 000 carti 100 librarii 1000 zile
+valorile aceleasi la toate.
+au acelasi nr de carti/librarie
+intre 2 si 20 processing days. ori foarte multe(20,18,15), ori putine(2,3,6,7,8). putine cu timp mediu
+1 carte scanata/zi
+ids carti is consecutive => nu se repeta niciuna
+
+c)100 000 carti 10 000 librarii 100 000 zile
+valori intre 500 si ceva si 1. Majoritatea de 3 cifre
+intre 10 si 20 carti/librarie
+intre 13 si 1000. Majoritatea de 3 cifre processing days
+intre 4000 si 90 000 carti scanate/zi
+pare ca fiecare librarie are carti diferite. nu se prea repeta nici intre librarii(cam de 2-4 ori daca 
+se repeta)
+
+
+
