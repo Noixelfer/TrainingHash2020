@@ -10,4 +10,8 @@
     <Folder Include="Data\Output\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HashCode.Genetic\HashCode.Genetic.csproj" />
+  </ItemGroup>
+
 </Project>
