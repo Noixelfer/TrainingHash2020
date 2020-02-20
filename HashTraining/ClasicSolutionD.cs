@@ -12,7 +12,7 @@ namespace HashTraining
 			this.pizzaModel = pizzaModel;
 		}
 
-		public PizzaOutputModel CreateOuputModel(string fileName)
+		public BookScanningOutput CreateOuputModel(string fileName)
 		{
 			////First, create a greedy model
 			//var remainingSpace = pizzaModel.NumberOfSlices;

@@ -47,16 +47,20 @@ namespace HashTraining
 			return model;
 		}
 
-		public void WriteToFile(string outputName, PizzaOutputModel pizzaOutputModel)
+		public void WriteToFile(string outputName, BookScanningOutput bookScanningOutputModel)
 		{
 			var outputPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Output\\" + outputName + ".out";
 			StreamWriter sr = new StreamWriter(outputPath, false);
-			sr.Write(pizzaOutputModel.NumberOfPizzas);
-			sr.WriteLine();
-			sr.Write(String.Join(" ", pizzaOutputModel.SelectedPizzaIds));
+			sr.Write(bookScanningOutputModel.NumberOfScannedLibraries);
+			bookScanningOutputModel.ScannedLibraries.ForEach(scannedLibrary =>
+			{
+				sr.WriteLine(scannedLibrary.Item1 + " " + scannedLibrary.Item2.Count);
+				sr.WriteLine(String.Join(' ', scannedLibrary.Item2));
+			});
+			sr.Close();
 
 			//Archive - TODO
-			var score = pizzaOutputModel.Score;
+			var score = bookScanningOutputModel.Score;
 			var archivePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Archive\\" + outputName.Substring(0, outputName.Length - 3);
 
 			if (!Directory.Exists(archivePath))
@@ -65,10 +69,13 @@ namespace HashTraining
 			}
 
 			var fileArchivePath = archivePath + "\\" + score.ToString();
-			StreamWriter srArchive = new StreamWriter(fileArchivePath, false);
-			srArchive.Write(pizzaOutputModel.NumberOfPizzas);
-			srArchive.WriteLine();
-			srArchive.Write(String.Join(" ", pizzaOutputModel.SelectedPizzaIds));
+			StreamWriter srArchive = new StreamWriter(outputPath, false);
+			srArchive.Write(bookScanningOutputModel.NumberOfScannedLibraries);
+			bookScanningOutputModel.ScannedLibraries.ForEach(scannedLibrary =>
+			{
+				srArchive.WriteLine(scannedLibrary.Item1 + " " + scannedLibrary.Item2.Count);
+				srArchive.WriteLine(String.Join(' ', scannedLibrary.Item2));
+			});
 			srArchive.Close();
 		}
 	}
