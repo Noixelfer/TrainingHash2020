@@ -14,5 +14,23 @@ intre 4000 si 90 000 carti scanate/zi
 pare ca fiecare librarie are carti diferite. nu se prea repeta nici intre librarii(cam de 2-4 ori daca 
 se repeta)
 
+e: 
+
+books value range: 1-250
+
+average 1.49 book shipped per day
+average 5.43 signing time
+average 0.23 booksperday/signing time
+average 107 days to ship all books from all libraries
+
+
+strategy possible: find book with highest value/signing time
+
+f:
+average 4-6 books per day
+average 100 days
+
+
+
 
 
