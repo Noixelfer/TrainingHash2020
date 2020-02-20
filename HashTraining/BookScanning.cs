@@ -8,6 +8,6 @@ namespace HashTraining
 		public int NumberOfLibraries { get; set; }
 		public int NumberOfDays { get; set; }
 		public List<int> BookScores { get; set; } = new List<int>();
-		public List<Library> Libraries { get; set; }
+		public List<Library> Libraries { get; set; } = new List<Library>();
 	}
 }

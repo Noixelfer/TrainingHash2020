@@ -10,7 +10,8 @@ namespace HashTraining
 	{
 		static void Main(string[] args)
 		{
-			RunAllLevels();
+			RunLevel("a.txt");
+			//RunAllLevels();
 		}
 
 		private static void RunAllLevels()
@@ -27,8 +28,8 @@ namespace HashTraining
 			DataManager DataManager = new DataManager();
 			var model = DataManager.ReadFromFile(levelName);
 			ClasicSolutionD clasicSolutionD = new ClasicSolutionD(model);
-			var outputModel = clasicSolutionD.CreateOuputModel(levelName);
-			DataManager.WriteToFile(levelName, outputModel);
+			//var outputModel = clasicSolutionD.CreateOuputModel(levelName);
+			//DataManager.WriteToFile(levelName, outputModel);
 		}
 	}
 }

@@ -7,6 +7,6 @@ namespace HashTraining
 		public int NumberOfBooks { get; set; }
 		public int SigningTime { get; set; }
 		public int BooksShippedPerDay { get; set; }
-		public HashSet<int> Books { get; set; }
+		public HashSet<int> Books { get; set; } = new HashSet<int>();
 	}
 }

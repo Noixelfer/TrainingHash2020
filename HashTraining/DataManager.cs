@@ -40,6 +40,8 @@ namespace HashTraining
 				library.BooksShippedPerDay = int.Parse(libraryLine1[2]);
 
 				libraryLine2.ToList().ForEach(word => library.Books.Add(int.Parse(word)));
+
+				model.Libraries.Add(library);
 			}
 
 			return model;
