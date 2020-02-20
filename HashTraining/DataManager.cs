@@ -47,7 +47,7 @@ namespace HashTraining
 			return model;
 		}
 
-		public void WriteToFile(string outputName, PizzaOutputModel pizzaOutputModel)
+		public void WriteToFile(string outputName, BookScanningOutput pizzaOutputModel)
 		{
 			var outputPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Output\\" + outputName + ".out";
 			StreamWriter sr = new StreamWriter(outputPath, false);
