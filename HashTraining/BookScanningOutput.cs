@@ -5,7 +5,7 @@ namespace HashTraining
 	public class BookScanningOutput
 	{
 		public int NumberOfScannedLibraries { get; set; }
-		public List<(int, List<int>)> ScannedLibraries { get; set; }
+		public List<(int, IEnumerable<int>)> ScannedLibraries { get; set; } = new List<(int, IEnumerable<int>)>();
 		public int Score
 		{
 			get

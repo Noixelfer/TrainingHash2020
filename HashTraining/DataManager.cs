@@ -54,7 +54,7 @@ namespace HashTraining
 			sr.Write(bookScanningOutputModel.NumberOfScannedLibraries);
 			bookScanningOutputModel.ScannedLibraries.ForEach(scannedLibrary =>
 			{
-				sr.WriteLine(scannedLibrary.Item1 + " " + scannedLibrary.Item2.Count);
+				sr.WriteLine(scannedLibrary.Item1.ToString() + " " + scannedLibrary.Item2.Count().ToString());
 				sr.WriteLine(String.Join(' ', scannedLibrary.Item2));
 			});
 			sr.Close();
@@ -73,7 +73,7 @@ namespace HashTraining
 			srArchive.Write(bookScanningOutputModel.NumberOfScannedLibraries);
 			bookScanningOutputModel.ScannedLibraries.ForEach(scannedLibrary =>
 			{
-				srArchive.WriteLine(scannedLibrary.Item1 + " " + scannedLibrary.Item2.Count);
+				srArchive.WriteLine(scannedLibrary.Item1.ToString() + " " + scannedLibrary.Item2.Count().ToString());
 				srArchive.WriteLine(String.Join(' ', scannedLibrary.Item2));
 			});
 			srArchive.Close();

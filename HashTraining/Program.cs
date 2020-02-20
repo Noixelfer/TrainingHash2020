@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace HashTraining
 {
@@ -10,8 +7,17 @@ namespace HashTraining
 	{
 		static void Main(string[] args)
 		{
-			RunLevel("a.txt");
+			//RunLevel("a.txt");
 			//RunAllLevels();
+			DataManager DataManager = new DataManager();
+			var model = DataManager.ReadFromFile("a.txt");
+
+			var outputModel = new BookScanningOutput();
+			outputModel.NumberOfScannedLibraries = 2;
+			outputModel.ScannedLibraries.Add((1, new List<int> { 5, 2, 3 }));
+			outputModel.ScannedLibraries.Add((0, new List<int> { 0, 1, 2, 3, 4 }));
+			Console.WriteLine(Scoring.GetScore(model, outputModel));
+			Console.Read();
 		}
 
 		private static void RunAllLevels()
