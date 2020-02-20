@@ -51,7 +51,7 @@ namespace HashTraining
 		{
 			var outputPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Output\\" + outputName + ".out";
 			StreamWriter sr = new StreamWriter(outputPath, false);
-			sr.Write(bookScanningOutputModel.NumberOfScannedLibraries);
+			sr.WriteLine(bookScanningOutputModel.NumberOfScannedLibraries);
 			bookScanningOutputModel.ScannedLibraries.ForEach(scannedLibrary =>
 			{
 				sr.WriteLine(scannedLibrary.Item1.ToString() + " " + scannedLibrary.Item2.Count().ToString());
@@ -70,7 +70,7 @@ namespace HashTraining
 
 			var fileArchivePath = archivePath + "\\" + score.ToString();
 			StreamWriter srArchive = new StreamWriter(outputPath, false);
-			srArchive.Write(bookScanningOutputModel.NumberOfScannedLibraries);
+			srArchive.WriteLine(bookScanningOutputModel.NumberOfScannedLibraries);
 			bookScanningOutputModel.ScannedLibraries.ForEach(scannedLibrary =>
 			{
 				srArchive.WriteLine(scannedLibrary.Item1.ToString() + " " + scannedLibrary.Item2.Count().ToString());
