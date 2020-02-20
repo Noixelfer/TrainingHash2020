@@ -15,11 +15,11 @@ namespace HashTraining
 
 		private static void RunAllLevels()
 		{
-			RunLevel("a_example.in");
-			RunLevel("b_small.in");
-			RunLevel("c_medium.in");
+			//RunLevel("a_example.in");
+			//RunLevel("b_small.in");
+			//RunLevel("c_medium.in");
 			RunLevel("d_quite_big.in");
-			RunLevel("e_also_big.in");
+			//RunLevel("e_also_big.in");
 		}
 
 		private static void RunLevel(string levelName)

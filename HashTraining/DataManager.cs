@@ -6,9 +6,9 @@ namespace HashTraining
 {
 	class DataManager
 	{
-		public PizzaModel ReadFromFile(string levelName)
+		public BookScanning ReadFromFile(string levelName)
 		{
-			var model = new PizzaModel();
+			var model = new BookScanning();
 			var inputPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Input\\";
 
 			var fullPath = inputPath + levelName;
@@ -18,8 +18,16 @@ namespace HashTraining
 
 			var firstLine = lines[0].Split(" ");
 			//read the first line
-			model.NumberOfSlices = int.Parse(firstLine[0]);
-			model.NumberOfTypes = int.Parse(firstLine[1]);
+			model.NumberOfBooks = int.Parse(firstLine[0]);
+			model.NumberOfLibraries = int.Parse(firstLine[1]);
+			model.NumberOfDays = int.Parse(firstLine[2]);
+
+			//read the second line
+			var secondLine = lines[1].Split(" ");
+			foreach (var word in secondLine)
+			{
+				model.BookScores.Add(int.Parse(word));
+			}
 
 			var slices = lines[1].Split(" ");
 			model.Slices = slices.Select(slice => int.Parse(slice)).ToList();
