@@ -38,6 +38,7 @@ namespace HashTraining
 				library.NumberOfBooks = int.Parse(libraryLine1[0]);
 				library.SigningTime = int.Parse(libraryLine1[1]);
 				library.BooksShippedPerDay = int.Parse(libraryLine1[2]);
+				library.Index = model.Libraries.Count;
 
 				libraryLine2.ToList().ForEach(word => library.Books.Add(int.Parse(word)));
 
