@@ -73,7 +73,17 @@ namespace HashTraining.Data
 
             using (var writer = new StreamWriter(outputFile, false))
             {
-                writer.Write("test");
+                writer.WriteLine(outputModel.NumberOfIntersections);
+                
+                foreach (var schedule in outputModel.Schedules)
+                {
+                    writer.WriteLine(schedule.IntersectionId);
+                    writer.WriteLine(schedule.StreetCount);
+                    foreach (var (name, time) in schedule.Times)
+                    {
+                        writer.WriteLine($"{name} {time}");
+                    }
+                }
             }
 
             if (File.Exists(archiveFile))

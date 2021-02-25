@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using HashTraining.Data;
+using HashTraining.Models;
 using HashTraining.Score;
 using HashTraining.Solvers;
 
@@ -21,14 +23,14 @@ namespace HashTraining
             {
                 var dataManager = new DataManager();
                 var model = dataManager.ReadFromFile(levelName);
-                
+
                 var scoring = new ScoreEvaluator();
                 var solver = new ClassicSolution();
-                
+
                 var outputModel = solver.Solve(model, scoring);
-                
+
                 dataManager.WriteToFile(levelName, outputModel);
-                
+
                 Console.WriteLine(scoring.GetScore(model, outputModel));
                 Console.Read();
             }
