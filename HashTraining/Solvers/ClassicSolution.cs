@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using HashTraining.Solvers;
+﻿using HashTraining.Models;
+using HashTraining.Score;
 
-namespace HashTraining
+namespace HashTraining.Solvers
 {
-    public class ClassicSolution : ISolver
+    public class ClassicSolution
     {
-        public OutputModel Solve(InputModel model)
+        public OutputModel Solve(InputModel model, ScoreEvaluator scoreEvaluator)
         {
-            throw new NotImplementedException();
+            return new OutputModel();
         }
     }
 }

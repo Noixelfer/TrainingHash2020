@@ -1,30 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using HashTraining.Data;
+using HashTraining.Score;
+using HashTraining.Solvers;
 
 namespace HashTraining
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-			
-			//RunLevel("a.txt");
-			//RunAllLevels();
-			var dataManager = new DataManager();
-			var model = dataManager.ReadFromFile("a.txt");
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+            RunLevel("a.txt");
+        }
 
-			var scoring = new ScoreEvaluator();
-			var solver = new ClassicSolution();
 
-			var outputModel = new OutputModel
-			{
-			};
-			Console.WriteLine(ScoreEvaluator.GetScore(model, outputModel));
-			Console.Read();
-		}
-
-	}
+        public static void RunLevel(string levelName)
+        {
+            try
+            {
+                var dataManager = new DataManager();
+                var model = dataManager.ReadFromFile(levelName);
+                var scoring = new ScoreEvaluator();
+                var solver = new ClassicSolution();
+                var outputModel = solver.Solve(model, scoring);
+                Console.WriteLine(scoring.GetScore(model, outputModel));
+                Console.Read();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+    }
 }

@@ -1,13 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace HashTraining
+﻿namespace HashTraining.Models
 {
-	public class InputModel
-	{
-		public int NumberOfBooks { get; set; }
-		public int NumberOfLibraries { get; set; }
-		public int NumberOfDays { get; set; }
-		public List<int> BookScores { get; set; } = new List<int>();
-		public List<Library> Libraries { get; set; } = new List<Library>();
-	}
+    public class InputModel
+    {
+    }
 }

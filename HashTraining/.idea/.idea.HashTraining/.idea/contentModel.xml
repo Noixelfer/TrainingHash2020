@@ -41,12 +41,10 @@
         </e>
         <e p="Output" t="Include" />
       </e>
-      <e p="HashTraining.7z" t="Include" />
       <e p="HashTraining.csproj" t="IncludeRecursive" />
       <e p="HashTraining.sln" t="IncludeFlat" />
       <e p="Models" t="Include">
         <e p="InputModel.cs" t="Include" />
-        <e p="Library.cs" t="Include" />
         <e p="OutputModel.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">
@@ -63,7 +61,6 @@
       </e>
       <e p="Solvers" t="Include">
         <e p="ClassicSolution.cs" t="Include" />
-        <e p="ISolver.cs" t="Include" />
       </e>
     </e>
   </component>

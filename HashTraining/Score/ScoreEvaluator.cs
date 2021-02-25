@@ -1,8 +1,10 @@
-namespace HashTraining
+using HashTraining.Models;
+
+namespace HashTraining.Score
 {
 	public class ScoreEvaluator
 	{
-		public static int GetScore(InputModel inputModel, OutputModel outputModel)
+		public int GetScore(InputModel inputModel, OutputModel outputModel)
 		{
 			return 0;
 		}
