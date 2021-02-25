@@ -1,13 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_HashTraining.1017270713.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+    <e p="C:\Users\Paul\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Paul\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_HashTraining.622399361.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Paul\RiderProjects\TrainingHash2020\HashCode.Genetic" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Configurations.cs" t="Include" />
+      <e p="Converters" t="Include">
+        <e p="GeneticConfigurationJsonConverter.cs" t="Include" />
+      </e>
+      <e p="GeneticSolver.cs" t="Include" />
+      <e p="HashCode.Genetic.csproj" t="IncludeRecursive" />
+      <e p="IPopulationFactory.cs" t="Include" />
+      <e p="Models" t="Include">
+        <e p="FitnessStagnationOrTresholdTermination.cs" t="Include" />
+        <e p="GeneticConfiguration.cs" t="Include" />
+        <e p="GeneticSolution.cs" t="Include" />
+        <e p="ParallelGeneticConfiguration.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="HashCode.Genetic.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+    </e>
+    <e p="C:\Users\Paul\RiderProjects\TrainingHash2020\HashTraining" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Data" t="Include">
+        <e p="Archive" t="Include" />
+        <e p="DataManager.cs" t="Include" />
+        <e p="Input" t="Include">
+          <e p="a.txt" t="Include" />
+          <e p="b.txt" t="Include" />
+          <e p="c.txt" t="Include" />
+          <e p="d.txt" t="Include" />
+          <e p="e.txt" t="Include" />
+          <e p="f.txt" t="Include" />
+        </e>
+        <e p="Output" t="Include" />
+      </e>
+      <e p="HashTraining.7z" t="Include" />
       <e p="HashTraining.csproj" t="IncludeRecursive" />
       <e p="HashTraining.sln" t="IncludeFlat" />
-      <e p="Program.cs" t="Include" />
-      <e p="bin" t="ExcludeRecursive" />
+      <e p="Models" t="Include">
+        <e p="InputModel.cs" t="Include" />
+        <e p="Library.cs" t="Include" />
+        <e p="OutputModel.cs" t="Include" />
+      </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
           <e p="netcoreapp3.1" t="Include">
@@ -16,6 +57,14 @@
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="Program.cs" t="Include" />
+      <e p="Score" t="Include">
+        <e p="ScoreEvaluator.cs" t="Include" />
+      </e>
+      <e p="Solvers" t="Include">
+        <e p="ClassicSolution.cs" t="Include" />
+        <e p="ISolver.cs" t="Include" />
+      </e>
     </e>
   </component>
 </project>

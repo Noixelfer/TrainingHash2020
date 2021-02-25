@@ -2,7 +2,7 @@
 
 namespace HashTraining
 {
-	public class BookScanning
+	public class InputModel
 	{
 		public int NumberOfBooks { get; set; }
 		public int NumberOfLibraries { get; set; }
