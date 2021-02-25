@@ -10,20 +10,20 @@ namespace HashTraining.Models
         public int NumberOfCars;
         public int CarBonusPoints;
 
-        public List<Street> Streets;
+        public Dictionary<string, Street> Streets = new Dictionary<string, Street>();
+        public List<CarPath> CarPaths = new List<CarPath>();
     }
     
     public class Street
     {
         public int IntersectionStart;
         public int IntersectionEnd;
-        public string Name;
         public int Length;
     }
 
     public class CarPath
     {
         public int StreetCount;
-        public List<string> StreetNames;
+        public List<Street> Streets;
     }
 }
