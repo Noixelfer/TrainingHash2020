@@ -12,6 +12,7 @@ namespace HashTraining
 			DataManager DataManager = new DataManager();
 			var model = DataManager.ReadFromFile("a.txt");
 
+
 			var outputModel = new BookScanningOutput();
 			outputModel.NumberOfScannedLibraries = 2;
 			outputModel.ScannedLibraries.Add((1, new List<int> { 5, 2, 3 }));
