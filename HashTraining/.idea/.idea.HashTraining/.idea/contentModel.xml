@@ -33,11 +33,6 @@
         <e p="DataManager.cs" t="Include" />
         <e p="Input" t="Include">
           <e p="a.txt" t="Include" />
-          <e p="b.txt" t="Include" />
-          <e p="c.txt" t="Include" />
-          <e p="d.txt" t="Include" />
-          <e p="e.txt" t="Include" />
-          <e p="f.txt" t="Include" />
         </e>
         <e p="Output" t="Include" />
       </e>

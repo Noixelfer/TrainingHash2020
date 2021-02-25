@@ -40,7 +40,8 @@ namespace HashTraining.Data
             {
                 writer.Write("test");
             }
-
+            if(File.Exists(archiveFile))
+                File.Delete(archiveFile);
             File.Copy(outputFile, archiveFile);
         }
     }

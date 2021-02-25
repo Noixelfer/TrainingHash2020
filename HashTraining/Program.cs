@@ -11,7 +11,7 @@ namespace HashTraining
         static void Main(string[] args)
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-            RunLevel("a.txt");
+            RunLevel("a");
         }
 
 
@@ -21,9 +21,14 @@ namespace HashTraining
             {
                 var dataManager = new DataManager();
                 var model = dataManager.ReadFromFile(levelName);
+                
                 var scoring = new ScoreEvaluator();
                 var solver = new ClassicSolution();
+                
                 var outputModel = solver.Solve(model, scoring);
+                
+                dataManager.WriteToFile(levelName, outputModel);
+                
                 Console.WriteLine(scoring.GetScore(model, outputModel));
                 Console.Read();
             }
